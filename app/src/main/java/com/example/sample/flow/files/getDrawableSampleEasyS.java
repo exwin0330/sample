@@ -8,7 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 
-public class getDrawableSampleEasy extends Activity {
+public class getDrawableSampleEasyS extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +17,7 @@ public class getDrawableSampleEasy extends Activity {
         int drawableResId = R.drawable.title_bar;
         Resources resources = getResources();
         Drawable drawable;
-        int theme = R.style.Theme;
+        int theme = 16973829;
 
         // SDK バージョンに応じて Drawable を取得
         if (Build.VERSION.SDK_INT >= 22) {
@@ -25,8 +25,5 @@ public class getDrawableSampleEasy extends Activity {
         } else {
             drawable = resources.getDrawable(drawableResId);
         }
-
-        // Drawable の使用（例: View にセットなど）
-        System.out.println("hoge");
     }
 }

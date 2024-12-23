@@ -1,8 +1,19 @@
-package com.example.sample.flow;
+package com.example.sample.flow.old;
 
-import polyglot.ast.Assign;
-import soot.*;
-import soot.JastAddJ.AssignExpr;
+import com.example.sample.flow.BacktrackingResult;
+import com.example.sample.flow.VariableClassification;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import soot.Body;
+import soot.Local;
+import soot.SootMethod;
+import soot.Unit;
+import soot.Value;
 import soot.jimple.AssignStmt;
 import soot.jimple.Constant;
 import soot.jimple.DefinitionStmt;
@@ -10,12 +21,9 @@ import soot.jimple.FieldRef;
 import soot.jimple.IdentityStmt;
 import soot.jimple.InvokeExpr;
 import soot.jimple.InvokeStmt;
-import soot.jimple.NewExpr;
 import soot.jimple.ParameterRef;
 import soot.jimple.Stmt;
 import soot.toolkits.graph.ExceptionalUnitGraph;
-
-import java.util.*;
 
 public class MethodAnalyzer {
     private final BacktrackingResult backtrackingResults;

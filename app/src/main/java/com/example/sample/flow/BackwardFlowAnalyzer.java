@@ -7,7 +7,6 @@ import soot.options.Options;
 import soot.toolkits.graph.*;
 import soot.toolkits.scalar.*;
 
-import java.io.File;
 import java.util.*;
 
 public class BackwardFlowAnalyzer {
@@ -61,7 +60,7 @@ public class BackwardFlowAnalyzer {
                             List<Value> args = invokeExpr.getArgs();
                             for (Value arg : args) {
                                 System.out.println("  Argument: " + arg);
-                                analyzeArgumentFlow(arg, body, unit);
+                                analyzeArgumentFlow(arg, body);
                             }
                         }
                     }
@@ -73,13 +72,13 @@ public class BackwardFlowAnalyzer {
     /**
      * 引数のデータフロー解析（後方スライス）
      */
-    private void analyzeArgumentFlow(Value arg, Body body, Unit startUnit) {
+    private void analyzeArgumentFlow(Value arg, Body body) {
         // グラフを作成
         UnitGraph graph = new BriefUnitGraph(body);
 
         // カスタムクラスを使って解析を実行
         BackwardValueAnalysis analysis = new BackwardValueAnalysis(graph, arg);
-        analysis.doAnalysis();
+        analysis.runAnalysis();
 
         // 解析結果の出力
         for (Unit unit : graph) {
@@ -90,7 +89,6 @@ public class BackwardFlowAnalyzer {
             }
         }
     }
-
 
     /**
      * ステートメントから InvokeExpr を取得
